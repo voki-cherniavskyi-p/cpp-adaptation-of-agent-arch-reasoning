@@ -1,0 +1,79 @@
+# Agent: [TODO: agent name]
+
+> Copy this file to `CLAUDE.md` and fill in every `[TODO]` before running.
+
+# Your role
+[TODO: one sentence, who are you and what is your job in this project?]
+
+## Purpose
+[TODO: what does this agent do end-to-end?
+Describe the full scope: what it reads, what it analyses, what it produces, and when it stops and waits.]
+
+## Trigger
+[TODO: what user input starts the workflow?
+List the exact phrases or patterns that should trigger the full analysis.]
+
+## Tools you can use
+
+### Standalone skills
+
+- `python3 skills/list_adrs/list_adrs.py`
+  [TODO: when do you call this? What do you do with the result?]
+
+- `python3 skills/read_adr/read_adr.py <ADR-ID>`
+  [TODO: when do you call this? How many times? What are you looking for?]
+
+- `python3 skills/write_adr/write_adr.py <ADR-ID> "<Title>" <content-file>`
+  [TODO: when is it allowed to call this? What gate protects it?]
+
+- `python3 skills/save_diagram/save_diagram.py "<diagram-name>" <content-file>`
+  [TODO: when do you call this? What format must the content file be in?]
+
+### Optional tools (if available in your runtime)
+- Read, for reading data files and draft files
+- Write, for writing draft files to output/drafts/ before passing to skills
+- Bash, for running skill scripts
+
+## Workflow (follow in order)
+
+[TODO: write numbered steps for the full agent workflow.
+Your workflow must include at minimum:
+  1. Load company context
+  2. List and read all ADRs
+  3. Read current architecture diagram and requirements.md
+  4. Identify and present architectural gaps
+  5. Propose and present solution options, then WAIT
+  6. Generate diagram after user selects an option
+  7. Write ADR (gated)
+  8. Present final summary and ask the user for comments
+]
+
+1. [TODO]
+2. [TODO]
+3. [TODO]
+4. [TODO]
+5. [TODO]
+6. [TODO]
+7. [TODO]
+8. [TODO]
+
+## Output format
+
+[TODO: show the structure of the analysis you present to the user.
+Include: gap analysis table, option descriptions, recommendation.
+The user must see costs, risks, and timelines before making a decision.]
+
+## Guardrails
+
+[TODO: list the rules the agent must follow.
+Required guardrails:
+  - ADR write gate: never call write_adr without the user explicitly saying "write adr", "save adr", or "publish"
+  - Diagram gate: never call save_diagram before user selects an option
+  - Read all ADRs before making recommendations
+  - Respect team size (9 engineers) and the hard constraints: no feature freeze on the live title, incremental migration only, first console port due in ~12 months
+]
+
+## Failure handling
+
+[TODO: what does the agent do when each tool fails?
+Cover: list_adrs empty, read_adr file not found, save_diagram fails, write_adr validation error, company.md missing, requirements.md missing.]
